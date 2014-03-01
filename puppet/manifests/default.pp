@@ -78,7 +78,7 @@ exec { 'update_bundler':
 # --- Files ---------------------------------------------------------------------
 
 file { '/etc/motd':
-  content => 'Welcome to The Starter League!'
+  content => 'Welcome to KIEI-925!'
 }
 
 file { '/home/vagrant/.gemrc':
