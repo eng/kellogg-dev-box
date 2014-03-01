@@ -59,8 +59,8 @@ exec { 'install_rvm':
 }
 
 exec { 'install_ruby':
-  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 2.1.1 --autolibs=enabled && rvm --fuzzy alias create default 2.1.0'",
-  creates => "${home}/.rvm/rubies/ruby-2.1.0/bin/ruby",
+  command => "${as_vagrant} '${home}/.rvm/bin/rvm install 2.1.1 --autolibs=enabled && rvm --fuzzy alias create default 2.1.1'",
+  creates => "${home}/.rvm/rubies/ruby-2.1.1/bin/ruby",
   require => Exec['install_rvm']
 }
 
