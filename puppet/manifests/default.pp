@@ -92,3 +92,16 @@ file { '/etc/profile.d/startup.sh':
 file { '/etc/profile.d/aliases.sh':
   source => '/home/vagrant/code/puppet/files/aliases.sh'
 }
+
+file { '/home/vagrant/eztemplate.rb':
+  source => '/home/vagrant/code/puppet/files/eztemplate.rb'
+}
+file { '/home/vagrant/.irbrc':
+  source => '/home/vagrant/code/puppet/files/irbrc'
+}
+file { '/home/vagrant/.railsrc':
+  content => '-m ~/eztemplate.rb'
+}
+
+
+

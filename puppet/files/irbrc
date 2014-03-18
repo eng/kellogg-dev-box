@@ -1,0 +1,30 @@
+require 'irb/completion'
+require 'irb/ext/save-history'
+require 'readline'
+
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
+IRB.conf[:SAVE_HISTORY] = 100
+IRB.conf[:USE_READLINE] = true
+IRB.conf[:AUTO_INDENT]=true
+
+Hirb.enable if defined?(Hirb)
+
+if defined?(Rails)
+  I18n.enforce_available_locales = false
+  puts "-" * 60
+  puts "Welcome to the Rails Console."
+  puts
+  tables = ActiveRecord::Base.connection.tables - ['schema_migrations']
+  models = tables.map { |t| t.classify }
+  if models.any?
+    puts "Use your model classes to add or delete rows from the database."
+    puts "Models: #{models.to_sentence}"
+    puts
+  end
+  puts "HINTS: "
+  puts "* Type 'exit' (or press Ctrl-D) to get back to the normal command prompt."
+  puts "* Hit Ctrl-C if things seem to get stuck."
+  puts "* Use the up/down arrows to repeat commands."
+  puts "* Type the name of a Model to see what columns it has." if models.any?
+  puts "-" * 60
+end
