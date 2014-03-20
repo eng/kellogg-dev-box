@@ -18,7 +18,7 @@ github_catchup() {
   git clean -qdf
   git pull -q
   bundle install --quiet --without production
-  rake db:schema:load
+  rake ez:reset_tables
   rake db:seed
   echo
   echo "Done.  You might need to restart your rails server if it was already running."
