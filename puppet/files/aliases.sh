@@ -2,7 +2,7 @@ alias r="rails"
 
 github_connect() {
   git remote add origin "$1.git"
-  echo "Your app is now connected to GitHub."
+  echo "Your app is now connected to GitHub.  Use github_push to take code snapshots and sync them to GitHub."
 }
 
 github_push() {
@@ -14,10 +14,12 @@ github_push() {
 
 github_catchup() {
   echo "Catching up..."
-  git clean -df
-  git checkout .
-  git pull --rebase
+  git checkout -q .
+  git clean -qdf
+  git pull -q
+  bundle install --quiet --without production
   rake db:schema:load
   rake db:seed
-  echo "Done."
+  echo
+  echo "Done.  You might need to restart your rails server if it was already running."
 }
