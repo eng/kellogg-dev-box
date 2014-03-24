@@ -31,6 +31,6 @@ EOS
 
 git :init
 git add: "--all ."
-git commit: "-mq 'Generate the app'"
+git commit: "-m 'Generate the app' -q"
 
 
