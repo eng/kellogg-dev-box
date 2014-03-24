@@ -5,8 +5,15 @@ github_connect() {
   echo "Your app is now connected to GitHub.  Use github_push to take code snapshots and sync them to GitHub."
 }
 
+save() {
+  git add -A
+  git commit -m "$1"
+  git push
+}
+
 github_push() {
-  echo "Pushing all changes to GitHub"
+  echo "Pushing all changes to GitHub..."
+  git pull --rebase
   git add -A
   git commit -m "$1"
   git push

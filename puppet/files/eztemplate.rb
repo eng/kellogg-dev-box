@@ -14,22 +14,23 @@ gem_group :production do
   gem "rails_12factor"
 end
 
-run "bundle install --without production"
+run "bundle install --without production --quiet"
 
 # generate('starter:style cerulean -f')
 # generate(:scaffold, "user", "name", "password_digest", "--no-stylesheets")
+# uncomment_lines "Gemfile", "bcrypt"
 
-uncomment_lines "Gemfile", "bcrypt"
 comment_lines 'app/controllers/application_controller.rb', /protect_from/
 
 rake "ez:generate_yml"
-
-git :init
-git add: "."
-git commit: "-m 'Generate the app'"
 
 application <<-EOS
     I18n.enforce_available_locales = false
     Hirb.enable if defined?(Hirb)
 EOS
+
+git :init
+git add: "."
+git commit: "-m 'Generate the app' -q"
+
 
