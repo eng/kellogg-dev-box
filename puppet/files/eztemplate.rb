@@ -30,7 +30,7 @@ application <<-EOS
 EOS
 
 git :init
-git add: "."
-git commit: "-m 'Generate the app' -q"
+git add: "--all ."
+git commit: "-mq 'Generate the app'"
 
 

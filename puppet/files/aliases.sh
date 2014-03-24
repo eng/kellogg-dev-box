@@ -14,7 +14,7 @@ save() {
 github_push() {
   echo "Pushing all changes to GitHub..."
   git pull --rebase
-  git add -A
+  git add -A '.'
   git commit -m "$1"
   git push
 }
