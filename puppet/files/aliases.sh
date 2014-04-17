@@ -1,4 +1,5 @@
 alias r="rails"
+alias stopserver="kill -9 $(lsof -wni tcp:3000 -t)"
 
 github_connect() {
   git remote add origin "$1.git"
